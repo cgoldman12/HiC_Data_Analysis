@@ -1,0 +1,15 @@
+#!/bin/bash
+#SBATCH --job-name=correct_matrix
+#SBATCH --partition=batch
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=chg85779@uga.edu
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=24
+#SBATCH --mem=100gb
+#SBATCH --time=16:00:00
+#SBATCH --output=Run123_CHG.%j.out
+#SBATCH --error=Run123_CHG.%j.err
+
+### based on diagnostic plot, we can filter out bins with extremely high or low read counts using --filterThreshold and the z-scores from the plot ###
+
+hicCorrectMatrix correct -m /path/to/HiC_matrix.h5 --filterThreshold -2 2.5 -o /path/to/outfile_HiC_corrected_matrix.h5
