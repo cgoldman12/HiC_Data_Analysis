@@ -11,4 +11,4 @@
 #SBATCH --error=Run123_CHG.%j.err
 
 
-bowtie2 --local -x /scratch/chg85779/Run123/scaffolds_FINAL.fasta2.fai -U /home/chg85779/Run123/Fastq/123-97_Afum_HiC_S39_R1_001.fastq.gz --reorder /scratch/chg85779/Run123/HiC_CEA10_R1_bowtie_reorder.sam
+bowtie2 --local -x /path/to/indexed/genome.fai -U /path/to/HiC_R1_001.fastq.gz --reorder /path/to/outfile_R1.sam
