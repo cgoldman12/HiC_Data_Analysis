@@ -1,0 +1,16 @@
+#!/bin/bash
+#SBATCH --job-name=hicMergeBins
+#SBATCH --partition=batch
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=chg85779@uga.edu
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=24
+#SBATCH --mem=100gb
+#SBATCH --time=16:00:00
+#SBATCH --output=Run123_CHG.%j.out
+#SBATCH --error=Run123_CHG.%j.err
+
+### bins can be merged to create the desired resolution for the particular plot ###
+### larger stretches of sequences (multiple chromosomes) required higher bin merging (nb = 10-50)
+
+hicMergeMatrixBins -m /path/to/File_HiC_matrix.h5 -o /path/to/outfile_nb50_matrix.h5 -nb 50
