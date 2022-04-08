@@ -1,0 +1,15 @@
+#!/bin/bash
+#SBATCH --job-name=matrix_analysis_plot
+#SBATCH --partition=batch
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=chg85779@uga.edu
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=24
+#SBATCH --mem=100gb
+#SBATCH --time=16:00:00
+#SBATCH --output=Run123_CHG.%j.out
+#SBATCH --error=Run123_CHG.%j.err
+
+### generates a diagnostic plot used to filter out bins with extremely high or low read counts ###
+
+hicCorrectMatrix diagnostic_plot -m /path/to/HiC_matrix.h5 -o /path/to/outfile_HiC_matrix_corrected.png
