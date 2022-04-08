@@ -10,5 +10,15 @@
 #SBATCH --output=Run123_CHG.%j.out
 #SBATCH --error=Run123_CHG.%j.err
 
+### bowtie2 used instead of bwa-mem do to sorting issues ###
+###--local option must be included due to chimeric reads ###
+###--reorder option ensures that reads in the output sam file are in the same order as the input fastq ###
 
-bowtie2 --local -x /path/to/indexed/genome.fai -U /path/to/HiC_R1_001.fastq.gz --reorder /path/to/outfile_R1.sam
+ml Bowtie2/2.3.5.1-GCC-8.3.0
+
+ml SAMtools/0.1.20-GCC-8.3.0
+
+bowtie2 --local -x /path/to/indexed/genome.fai -U /path/to/HiC_R1_001.fastq.gz --reorder /path/to/outfile_R1.sam | samtools view -Shb /path/to/file.sam > /path/to/file.bam
+
+### must do this for the R2 reads as well ###
+### script produces bam files for making HiC matrix ###
