@@ -1,0 +1,15 @@
+#!/bin/bash
+#SBATCH --job-name=plot_matrix
+#SBATCH --partition=batch
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=chg85779@uga.edu
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=24
+#SBATCH --mem=100gb
+#SBATCH --time=16:00:00
+#SBATCH --output=Run123_CHG.%j.out
+#SBATCH --error=Run123_CHG.%j.err
+
+### creates a graphical representation of the corrected matrix in log scale ###
+
+hicPlotMatrix -m /path/to/HiC_corrected_matrix.h5 -o /path/to/outfile_HiC_plot_matrix.png --log1p
